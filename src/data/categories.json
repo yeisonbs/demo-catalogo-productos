@@ -1,0 +1,9 @@
+[
+    { "id": 1, "name": "Home" },
+    { "id": 2, "name": "Celulares" },
+    { "id": 3, "name": "Motocicletas" },
+    { "id": 4, "name": "Tus Prestamos" },
+    { "id": 5, "name": "Tiendas" },
+    { "id": 6, "name": "Tracking" },
+    { "id": 7, "name": "ClubMacropay" }
+  ]

@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "brand": "Samsung",
+    "name": "Galaxy S21",
+    "price": 799.99,
+    "reviews": 4,
+    "image": "url_de_la_imagen_1.jpg"
+  },
+  {
+    "id": 2,
+    "brand": "Apple",
+    "name": "iPhone 13",
+    "price": 999.99,
+    "reviews": 5,
+    "image": "url_de_la_imagen_2.jpg"
+  },
+  {
+    "id": 3,
+    "brand": "Google",
+    "name": "Pixel 6",
+    "price": 899.99,
+    "reviews": 4,
+    "image": "url_de_la_imagen_3.jpg"
+  },
+  {
+    "id": 4,
+    "brand": "OnePlus",
+    "name": "OnePlus 9",
+    "price": 849.99,
+    "reviews": 4.5,
+    "image": "url_de_la_imagen_4.jpg"
+  },
+  {
+    "id": 5,
+    "brand": "Xiaomi",
+    "name": "Mi 11",
+    "price": 699.99,
+    "reviews": 4,
+    "image": "url_de_la_imagen_5.jpg"
+  },
+  {
+    "id": 6,
+    "brand": "Sony",
+    "name": "Xperia 5 III",
+    "price": 1099.99,
+    "reviews": 4.5,
+    "image": "url_de_la_imagen_6.jpg"
+  }
+]
