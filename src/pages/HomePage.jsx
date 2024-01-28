@@ -12,6 +12,7 @@ import Footer from '../components/footer/Footer';
 const HomePage = () => {
 
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [selectedBrand, setSelectedBrand] = useState('All');
 
   const handleProductClick = (product) => {
     setSelectedProduct(product);
@@ -19,6 +20,11 @@ const HomePage = () => {
 
   const handleCloseModal = () => {
     setSelectedProduct(null);
+  };
+
+  const handleFilterChange = (filters) => {
+    setSelectedBrand(filters.brand);
+    // Puedes agregar lógica adicional según sea necesario
   };
 
   return (
@@ -31,13 +37,19 @@ const HomePage = () => {
         <div style={{ display: 'flex' }}>
           {/* Columna izquierda para el ProductFilter */}
           <div style={{ flex: '0 0 30%', paddingRight: '20px' }}>
-            <ProductFilter />
+            <ProductFilter onFilterChange={handleFilterChange} />
             <h1>primer bloque</h1>
           </div>
           <div>
             {/* Renderizar ProductItem y otros elementos */}
-            <ProductItem product={productsData[2]} onProductClick={handleProductClick} />
-
+            {productsData.map((product) => (
+              <ProductItem
+                key={product.id}
+                product={product}
+                onProductClick={handleProductClick}
+                filteredBrand={selectedBrand}
+              />
+            ))}
             {/* Renderizar ProductModal */}
             <ProductModal product={selectedProduct} onClose={handleCloseModal} />
 

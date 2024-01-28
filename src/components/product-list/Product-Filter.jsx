@@ -6,7 +6,7 @@ import productsData from '../../data/Products.json';
 const ProductFilter = ({ onFilterChange }) => {
   const [brands, setBrands] = useState([]);
   const [selectedBrand, setSelectedBrand] = useState('All');
-  const [priceRange, setPriceRange] = useState([0, 100]);
+  const [priceRange, setPriceRange] = useState([200, 2000]);
   const [reviewRange, setReviewRange] = useState([1, 5]);
 
   useEffect(() => {
@@ -17,11 +17,13 @@ const ProductFilter = ({ onFilterChange }) => {
 
   const handleBrandChange = (event) => {
     setSelectedBrand(event.target.value);
+    console.log(event.target.value);
     onFilterChange({ brand: event.target.value, priceRange, reviewRange });
   };
 
   const handlePriceChange = (_, newValue) => {
     setPriceRange(newValue);
+    console.log(newValue);
     onFilterChange({ brand: selectedBrand, priceRange: newValue, reviewRange });
   };
 
@@ -62,8 +64,8 @@ const ProductFilter = ({ onFilterChange }) => {
             valueLabelDisplay="auto"
             aria-labelledby="price-range-slider"
             valueLabelFormat={(value) => `$${value}`}
-            min={0}
-            max={100}
+            min={50000}  // Valor mínimo para el rango de precios
+            max={2000}  // Valor máximo para el rango de precios
           />
         </Grid>
         <Grid item xs={12}>
