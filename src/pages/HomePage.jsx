@@ -1,12 +1,24 @@
 //Pagina principal que incluye el encabezado y el componente de la lista de productos// pages/HomePage.js
 import React from 'react';
-
+import { useState } from 'react';
 import HeaderMenu from '../components/header/HeaderMenu';
 import ProductFilter from '../components/product-list/Product-Filter';
 import ProductItem from '../components/product-list/Product-Item';
+import ProductModal from '../components/product-list/Product-Modal';
+import productsData from '../data/Products.json';
 
 
 const HomePage = () => {
+
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  const handleProductClick = (product) => {
+    setSelectedProduct(product);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedProduct(null);
+  };
 
   return (
     <div>
@@ -19,18 +31,25 @@ const HomePage = () => {
          <h1>primer bloque</h1>
         </div>
 
-        {/* Columna derecha para los ProductItem */}
-        <div>
+      
       
       <div>
-        <ProductItem />
+         {/* Renderizar ProductItem y otros elementos */}
+      <ProductItem product={productsData[2]} onProductClick={handleProductClick} />
+      {/* Otros productos y elementos */}
+      
+      {/* Renderizar ProductModal */}
+      <ProductModal product={selectedProduct} onClose={handleCloseModal} />
+      
       </div>
+
+      
      
       
 
     </div>
       </div>
-    </div>
+   
   );
 };
 

@@ -4,7 +4,13 @@ import React from 'react';
 import { Card, CardContent, Typography, CardActions, Button, Box, Rating, CardMedia, Grid } from '@mui/material';
 import productsData from '../../data/Products.json';
 
-const ProductItem = () => {
+
+
+  const ProductItem = ({ product, onProductClick }) => {
+    const handleButtonClick = () => {
+      onProductClick(product);
+    };
+
   return (
     <Grid container spacing={2} sx={{ marginTop: '50px' }}>
       {productsData.map((product) => (
@@ -22,7 +28,7 @@ const ProductItem = () => {
               </Box>
             </CardContent>
             <CardActions>
-              <Button color= "primary" variant="contained">Lo Quiero</Button>
+            <Button id={`product-${product.id}`} variant="contained" color="primary" onClick={handleButtonClick}> Lo quiero</Button>
             </CardActions>
           </Card>
         </Grid>
