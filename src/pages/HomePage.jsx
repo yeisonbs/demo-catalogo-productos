@@ -6,6 +6,7 @@ import ProductFilter from '../components/product-list/Product-Filter';
 import ProductItem from '../components/product-list/Product-Item';
 import ProductModal from '../components/product-list/Product-Modal';
 import productsData from '../data/Products.json';
+import Footer from '../components/footer/Footer';
 
 
 const HomePage = () => {
@@ -22,34 +23,34 @@ const HomePage = () => {
 
   return (
     <div>
-      <HeaderMenu />
-      
-      <div style={{ display: 'flex' }}>
-        {/* Columna izquierda para el ProductFilter */}
-        <div style={{ flex: '0 0 30%', paddingRight: '20px' }}>
-          <ProductFilter />
-         <h1>primer bloque</h1>
+      <header>
+        <HeaderMenu />
+      </header>
+
+      <section>
+        <div style={{ display: 'flex' }}>
+          {/* Columna izquierda para el ProductFilter */}
+          <div style={{ flex: '0 0 30%', paddingRight: '20px' }}>
+            <ProductFilter />
+            <h1>primer bloque</h1>
+          </div>
+          <div>
+            {/* Renderizar ProductItem y otros elementos */}
+            <ProductItem product={productsData[2]} onProductClick={handleProductClick} />
+
+            {/* Renderizar ProductModal */}
+            <ProductModal product={selectedProduct} onClose={handleCloseModal} />
+
+          </div>
         </div>
+      </section>
 
-      
-      
-      <div>
-         {/* Renderizar ProductItem y otros elementos */}
-      <ProductItem product={productsData[2]} onProductClick={handleProductClick} />
-      {/* Otros productos y elementos */}
-      
-      {/* Renderizar ProductModal */}
-      <ProductModal product={selectedProduct} onClose={handleCloseModal} />
-      
-      </div>
-
-      
-     
-      
+      <footer >
+        <Footer />
+      </footer>
 
     </div>
-      </div>
-   
+
   );
 };
 
