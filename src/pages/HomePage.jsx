@@ -1,4 +1,4 @@
-//Pagina principal que incluye el encabezado y el componente de la lista de productos// pages/HomePage.js
+// pages/HomePage.js
 import React from 'react';
 import { useState } from 'react';
 import HeaderMenu from '../components/header/HeaderMenu';
@@ -7,12 +7,13 @@ import ProductItem from '../components/product-list/Product-Item';
 import ProductModal from '../components/product-list/Product-Modal';
 import productsData from '../data/Products.json';
 import Footer from '../components/footer/Footer';
-
+import { Grid } from '@mui/material';
 
 const HomePage = () => {
-
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [selectedBrand, setSelectedBrand] = useState('All');
+  const [minPrice, setMinPrice] = useState();
+  const [maxPrice, setMaxPrice] = useState(10000);
 
   const handleProductClick = (product) => {
     setSelectedProduct(product);
@@ -24,6 +25,8 @@ const HomePage = () => {
 
   const handleFilterChange = (filters) => {
     setSelectedBrand(filters.brand);
+    setMinPrice(filters.minPrice);
+    setMaxPrice(filters.maxPrice);
     // Puedes agregar lógica adicional según sea necesario
   };
 
@@ -40,29 +43,30 @@ const HomePage = () => {
             <ProductFilter onFilterChange={handleFilterChange} />
             <h1>primer bloque</h1>
           </div>
-          <div>
+          <div style={{ flex: '1' }}>
             {/* Renderizar ProductItem y otros elementos */}
-            {productsData.map((product) => (
-              <ProductItem
-                key={product.id}
-                product={product}
-                onProductClick={handleProductClick}
-                filteredBrand={selectedBrand}
-              />
-            ))}
-            {/* Renderizar ProductModal */}
-            <ProductModal product={selectedProduct} onClose={handleCloseModal} />
-
+            <Grid container spacing={2} sx={{ display: 'flex', flexWrap: 'wrap' }}>
+              {productsData.map((product) => (
+                <ProductItem
+                  key={product.id}
+                  product={product}
+                  onProductClick={handleProductClick}
+                  filteredBrand={selectedBrand}
+                  minPrice={minPrice}
+                  maxPrice={maxPrice}
+                />
+              ))}
+            </Grid>
           </div>
         </div>
       </section>
 
-      <footer >
+      <footer>
         <Footer />
       </footer>
-
+      {/* Renderizar ProductModal */}
+      <ProductModal product={selectedProduct} onClose={handleCloseModal} />
     </div>
-
   );
 };
 

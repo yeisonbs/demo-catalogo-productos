@@ -27,7 +27,7 @@ const ProductModal = ({ product, onClose }) => {
       </DialogContent>
       <Box sx={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
         <Button variant="contained" color="primary" onClick={onClose}>
-          Cerrar
+          Credito
         </Button>
       </Box>
     </Dialog>

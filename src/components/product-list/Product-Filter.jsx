@@ -7,7 +7,7 @@ import TextField from '@mui/material/TextField';
 const ProductFilter = ({ onFilterChange }) => {
   const [brands, setBrands] = useState([]);
   const [selectedBrand, setSelectedBrand] = useState('All');
-  const [minPrice, setMinPrice] = useState(0);
+  const [minPrice, setMinPrice] = useState();
   const [maxPrice, setMaxPrice] = useState(10000);
   const [reviewRange, setReviewRange] = useState([1, 5]);
 
