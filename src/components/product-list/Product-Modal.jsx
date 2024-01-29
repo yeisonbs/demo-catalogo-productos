@@ -1,13 +1,16 @@
 // components/ProductModal.js
 import React from 'react';
 import { Dialog, DialogTitle, DialogContent, Typography, Box, Rating, Button } from '@mui/material';
+/* import ProductDetail from '../product-detail/ProductDetail';
+import RelatedProducts from '../product-detail/RelatedProducts';
+import CreditRequest from '../product-detail/CreditRequest'; */
 
-const ProductModal = ({ product, onClose }) => {
+const ProductModal = ({ product, onClose,/*  onCreditRequest */ }) => {
   if (!product) {
     return null;
   }
 
-  const { brand, name, price, reviews, image } = product;
+  const { brand, name, price, reviews, image, /* specifications, relatedProducts */ } = product;
 
   return (
     <Dialog open={true} onClose={onClose} maxWidth="md">
@@ -23,6 +26,9 @@ const ProductModal = ({ product, onClose }) => {
             <Rating name="read-only" value={reviews} readOnly />
             <Typography>({reviews} reviews)</Typography>
           </Box>
+          {/* <ProductDetail specifications={specifications} />
+          <RelatedProducts products={relatedProducts} />
+          <CreditRequest onCreditRequest={onCreditRequest} /> */}
         </Box>
       </DialogContent>
       <Box sx={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
