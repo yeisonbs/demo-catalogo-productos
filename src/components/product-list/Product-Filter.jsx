@@ -2,11 +2,13 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Typography, Select, MenuItem, Slider, FormControl, InputLabel, Grid } from '@mui/material';
 import productsData from '../../data/Products.json';
+import TextField from '@mui/material/TextField';
 
 const ProductFilter = ({ onFilterChange }) => {
   const [brands, setBrands] = useState([]);
   const [selectedBrand, setSelectedBrand] = useState('All');
-  const [priceRange, setPriceRange] = useState([200, 2000]);
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(10000);
   const [reviewRange, setReviewRange] = useState([1, 5]);
 
   useEffect(() => {
@@ -17,19 +19,22 @@ const ProductFilter = ({ onFilterChange }) => {
 
   const handleBrandChange = (event) => {
     setSelectedBrand(event.target.value);
-    console.log(event.target.value);
-    onFilterChange({ brand: event.target.value, priceRange, reviewRange });
+    onFilterChange({ brand: event.target.value, minPrice, maxPrice, reviewRange });
   };
 
-  const handlePriceChange = (_, newValue) => {
-    setPriceRange(newValue);
-    console.log(newValue);
-    onFilterChange({ brand: selectedBrand, priceRange: newValue, reviewRange });
+  const handleMinPriceChange = (event) => {
+    setMinPrice(parseFloat(event.target.value));
+    onFilterChange({ brand: selectedBrand, minPrice: parseFloat(event.target.value), maxPrice, reviewRange });
+  };
+
+  const handleMaxPriceChange = (event) => {
+    setMaxPrice(parseFloat(event.target.value));
+    onFilterChange({ brand: selectedBrand, minPrice, maxPrice: parseFloat(event.target.value), reviewRange });
   };
 
   const handleReviewChange = (_, newValue) => {
     setReviewRange(newValue);
-    onFilterChange({ brand: selectedBrand, priceRange, reviewRange: newValue });
+    onFilterChange({ brand: selectedBrand, maxPrice,minPrice, reviewRange: newValue });
   };
 
   return (
@@ -53,21 +58,31 @@ const ProductFilter = ({ onFilterChange }) => {
         </Select>
       </FormControl>
 
+      
       <Grid container spacing={2} sx={{ mt: 2 }}>
-        <Grid item xs={12}>
-          <Typography id="price-range-slider" gutterBottom>
-            Precio
+        <Grid item xs={12} md={6}>
+          <Typography id="min-price" gutterBottom>
+            Precio mínimo
           </Typography>
-          <Slider
-            value={priceRange}
-            onChange={handlePriceChange}
-            valueLabelDisplay="auto"
-            aria-labelledby="price-range-slider"
-            valueLabelFormat={(value) => `$${value}`}
-            min={50000}  // Valor mínimo para el rango de precios
-            max={2000}  // Valor máximo para el rango de precios
+          <TextField
+            id="min-price"
+            type="number"
+            value={minPrice}
+            onChange={handleMinPriceChange}
           />
         </Grid>
+        <Grid item xs={12} md={6}>
+          <Typography id="max-price" gutterBottom>
+            Precio máximo
+          </Typography>
+          <TextField
+            id="max-price"
+            type="number"
+            value={maxPrice}
+            onChange={handleMaxPriceChange}
+          />
+        </Grid>
+        
         <Grid item xs={12}>
           <Typography id="review-range-slider" gutterBottom>
             Reviews

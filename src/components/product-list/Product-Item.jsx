@@ -6,10 +6,21 @@ import productsData from '../../data/Products.json';
 
 
 
-const ProductItem = ({ product, onProductClick, filteredBrand,filteredPriceRange }) => {
+const ProductItem = ({ product, onProductClick, filteredBrand,filteredMinPrice, filteredMaxPrice }) => {
   const handleButtonClick = () => {
     onProductClick(product);
   };
+
+  // Verificar si el producto debe mostrarse según el rango de precios filtrado
+  const productPrice = parseFloat(product.price);
+  /* const minPrice = parseFloat(filteredMinPrice);
+  const maxPrice = parseFloat(filteredMaxPrice);  */ 
+
+  /* console.log('Min Price item:', minPrice);
+  console.log('Max Price item:', maxPrice); */
+
+  console.log('Min Price item:', filteredMinPrice);
+  console.log('Max Price item:', filteredMaxPrice);
 
   // Verificar si el producto debe mostrarse según la marca filtrada
   if (filteredBrand !== 'All' && product.brand !== filteredBrand) {
@@ -17,20 +28,20 @@ const ProductItem = ({ product, onProductClick, filteredBrand,filteredPriceRange
     return null; // No renderizar el componente si la marca no coincide
   }
 
-   // Verificar si el producto debe mostrarse según el rango de precios filtrado
- /*   if (
-    (filteredPriceRange[0] !== 200 && product.price < filteredPriceRange[0]) ||
-    (filteredPriceRange[1] !== 2000 && product.price > filteredPriceRange[1])
+  /*    if (
+    (!isNaN(minPrice) && productPrice < minPrice) ||
+    (!isNaN(maxPrice) && productPrice > maxPrice)
   ) {
-    console.log(filteredPriceRange, product.price, 'no coincide');
     return null; // No renderizar el componente si el precio no está en el rango
   } */
+  let minPrice = 600;
+  let maxPrice = 900;
 
   return (
     <Grid container spacing={2} sx={{ marginTop: '50px' }}>
     {productsData
-      .filter((product) => filteredBrand === 'All' || product.brand === filteredBrand || product.price === filteredPriceRange)
-      .map((product) => (
+        .filter((product) => ((filteredBrand === 'All' || product.brand === filteredBrand)) && ((isNaN(minPrice) || product.price >= minPrice) && (isNaN(maxPrice) || product.price <= maxPrice)) ) 
+        .map((product) => (    
         <Grid item key={product.id}  container spacing={2} xs={12} sm={6} md={4} >
           <Card container xs={12} sm={6} md={4}>
             <CardMedia container xs={12} sm={6} md={4} component="img" height="140" image={product.image} alt={product.brand} />
