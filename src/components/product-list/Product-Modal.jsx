@@ -17,7 +17,7 @@ const ProductModal = ({ product, onClose,/*  onCreditRequest */ }) => {
       <DialogTitle>{brand}</DialogTitle>
       <DialogContent>
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <img src={image} alt={brand} style={{ width: '100%', maxWidth: '400px', marginBottom: '20px' }} />
+          <img src={image} alt={brand} style={{ width: '60%', maxWidth: '80%', marginBottom: '20px' }} />
           <Typography variant="h6">{name}</Typography>
           <Typography variant="subtitle1" color="text.secondary">
             Precio: ${price}
@@ -31,11 +31,19 @@ const ProductModal = ({ product, onClose,/*  onCreditRequest */ }) => {
           <CreditRequest onCreditRequest={onCreditRequest} /> */}
         </Box>
       </DialogContent>
+
       <Box sx={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
-        <Button variant="contained" color="primary" onClick={onClose}>
+        <Button marginTop="20px" variant="contained" color="primary" onClick={onClose}>
           Credito
         </Button>
       </Box>
+
+      <Box sx={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
+        <label marginTop="20px" variant="contained" color="primary" onClick={onClose}>
+          Comprar a contado
+        </label>
+      </Box>
+
     </Dialog>
   );
 };
