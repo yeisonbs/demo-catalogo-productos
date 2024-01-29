@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Box, Typography, Select, MenuItem, Slider, FormControl, InputLabel, Grid } from '@mui/material';
 import productsData from '../../data/Products.json';
 import TextField from '@mui/material/TextField';
+import Rating from '@mui/material/Rating';
 
 const ProductFilter = ({ onFilterChange }) => {
   const [brands, setBrands] = useState([]);
@@ -34,7 +35,7 @@ const ProductFilter = ({ onFilterChange }) => {
 
   const handleReviewChange = (_, newValue) => {
     setReviewRange(newValue);
-    onFilterChange({ brand: selectedBrand, maxPrice,minPrice, reviewRange: newValue });
+    onFilterChange({ brand: selectedBrand, maxPrice, minPrice, reviewRange: newValue });
   };
 
   return (
@@ -58,7 +59,7 @@ const ProductFilter = ({ onFilterChange }) => {
         </Select>
       </FormControl>
 
-      
+
       <Grid container spacing={2} sx={{ mt: 2 }}>
         <Grid item xs={12} md={6}>
           <Typography id="min-price" gutterBottom>
@@ -82,19 +83,16 @@ const ProductFilter = ({ onFilterChange }) => {
             onChange={handleMaxPriceChange}
           />
         </Grid>
-        
-        <Grid item xs={12}>
-          <Typography id="review-range-slider" gutterBottom>
+
+        <Grid item xs={12} sx={{ display: 'flex', alignItems: 'center' }}>
+          <Typography id="review-range-slider" sx={{ marginRight: '10px' }}>
             Reviews
           </Typography>
-          <Slider
-            value={reviewRange}
-            onChange={handleReviewChange}
-            valueLabelDisplay="auto"
-            aria-labelledby="review-range-slider"
-            valueLabelFormat={(value) => value}
-            min={1}
-            max={5}
+          <Rating
+            name="review-range"
+            value={reviewRange[1]}
+            precision={1}
+            onChange={(_, newValue) => handleReviewChange(_, [1, newValue])}
           />
         </Grid>
       </Grid>

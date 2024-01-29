@@ -36,9 +36,9 @@ const ProductItem = ({ product, onProductClick, filteredBrand, filteredMinPrice,
       {/*  {productsData
         .filter((product) => ((filteredBrand === 'All' || product.brand === filteredBrand)) && ((isNaN(minPrice) || product.price >= minPrice) && (isNaN(maxPrice) || product.price <= maxPrice)) ) 
         .map((product) => (  */}
-      <Grid >
-        <Card>
-          <CardMedia component="img" height="140" image={product.image} alt={product.brand} />
+      <Grid marginBlock={'20px'} alignItems={'center'}>
+        <Card >
+          <CardMedia component="img" height="240" image={product.image} alt={product.brand} />
           <CardContent>
             <Typography variant="h6">{product.name}</Typography>
             <Typography variant="body2" color="text.secondary">

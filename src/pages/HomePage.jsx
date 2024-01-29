@@ -41,7 +41,6 @@ const HomePage = () => {
           {/* Columna izquierda para el ProductFilter */}
           <div style={{ flex: '0 0 30%', paddingRight: '20px' }}>
             <ProductFilter onFilterChange={handleFilterChange} />
-            <h1>primer bloque</h1>
           </div>
           <div style={{ flex: '1' }}>
             {/* Renderizar ProductItem y otros elementos */}
