@@ -4,7 +4,7 @@
     "brand": "Samsung",
     "name": "Galaxy S21",
     "price": 799.99,
-    "reviews": 4,
+    "reviews": 1,
     "image": "https://www.corning.com/microsites/csm/gorillaglass/Samsung/CGG_Samsun_galaxys21_phantom.jpg"
   },
   {
@@ -12,7 +12,7 @@
     "brand": "Apple",
     "name": "iPhone 13",
     "price": 999.99,
-    "reviews": 5,
+    "reviews": 2,
     "image": "https://mac-center.com/cdn/shop/products/IMG-6206251_823x.jpg?v=1661520210"
   },
   {
@@ -20,7 +20,7 @@
     "brand": "Google",
     "name": "Pixel 6",
     "price": 899.99,
-    "reviews": 4,
+    "reviews": 3,
     "image": "https://m.media-amazon.com/images/I/616f+pT5V9L.jpg"
   },
   {
@@ -28,7 +28,7 @@
     "brand": "OnePlus",
     "name": "OnePlus 9",
     "price": 849.99,
-    "reviews": 4.5,
+    "reviews": 4,
     "image": "https://oasis.opstatics.com/content/dam/oasis/default/product-specs/8t-green.png"
   },
   {
@@ -36,7 +36,7 @@
     "brand": "Xiaomi",
     "name": "Mi 11",
     "price": 699.99,
-    "reviews": 4,
+    "reviews": 5,
     "image": "https://m.media-amazon.com/images/I/415E+XnI-RS._SL500_.jpg"
   },
   {

@@ -12,8 +12,9 @@ import { Grid } from '@mui/material';
 const HomePage = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [selectedBrand, setSelectedBrand] = useState('All');
-  const [minPrice, setMinPrice] = useState();
+  const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(10000);
+  const [reviews, setReviews] = useState([1, 5]);
 
   const handleProductClick = (product) => {
     setSelectedProduct(product);
@@ -27,7 +28,7 @@ const HomePage = () => {
     setSelectedBrand(filters.brand);
     setMinPrice(filters.minPrice);
     setMaxPrice(filters.maxPrice);
-    // Puedes agregar lógica adicional según sea necesario
+    setReviews(parseFloat(filters.reviewRange));
   };
 
   return (
@@ -53,6 +54,7 @@ const HomePage = () => {
                   filteredBrand={selectedBrand}
                   filteredMinPrice={minPrice}
                   filteredMaxPrice={maxPrice}
+                  filteredReviews={reviews}
                 />
               ))}
             </Grid>

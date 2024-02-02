@@ -1,13 +1,12 @@
 // (Componente individual de un producto en la lista)
-// components/ProductItem.js
 import React from 'react';
 import { Card, CardContent, Typography, CardActions, Button, Box, Rating, CardMedia, Grid } from '@mui/material';
-//import productsData from '../../data/Products.json';
 
 
+const ProductItem = ({ product, onProductClick, filteredBrand, filteredMinPrice, filteredMaxPrice, filteredReviews }) => {
 
-const ProductItem = ({ product, onProductClick, filteredBrand, filteredMinPrice, filteredMaxPrice }) => {
   const handleButtonClick = () => {
+    console.log('Producto seleccionado:', product, 'filtrado por:', filteredReviews);
     onProductClick(product);
   };
 
@@ -21,6 +20,8 @@ const ProductItem = ({ product, onProductClick, filteredBrand, filteredMinPrice,
   const productPrice = parseFloat(product.price);
   const minPrice = parseFloat(filteredMinPrice);
   const maxPrice = parseFloat(filteredMaxPrice);
+  const reviews = parseFloat(filteredReviews);
+  console.log('Precio del producto:', productPrice, 'Reviews:', reviews);
 
   if (
     (!isNaN(minPrice) && productPrice <= minPrice) ||
@@ -28,13 +29,15 @@ const ProductItem = ({ product, onProductClick, filteredBrand, filteredMinPrice,
   ) {
     return null; // No renderizar el componente si el precio no está en el rango
   }
-  
+
+  if (!isNaN(reviews) && (product.reviews < reviews || product.reviews > reviews)) {
+    console.log('No renderizar el producto:', product.reviews, reviews);
+    return null; // No renderizar el componente si las revisiones no están en el rango
+  }
+
 
   return (
     <Grid item xs={12} sm={6} md={4}>
-      {/*  {productsData
-        .filter((product) => ((filteredBrand === 'All' || product.brand === filteredBrand)) && ((isNaN(minPrice) || product.price >= minPrice) && (isNaN(maxPrice) || product.price <= maxPrice)) ) 
-        .map((product) => (  */}
       <Grid marginBlock={'20px'} alignItems={'center'}>
         <Card >
           <CardMedia component="img" height="240" image={product.image} alt={product.brand} />

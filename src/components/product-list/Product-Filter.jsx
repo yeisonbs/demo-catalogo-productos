@@ -34,9 +34,11 @@ const ProductFilter = ({ onFilterChange }) => {
   };
 
   const handleReviewChange = (_, newValue) => {
-    setReviewRange(newValue);
+    /* console.log('Review Change:', newValue, typeof newValue); */
+    setReviewRange(parseFloat(newValue));
     onFilterChange({ brand: selectedBrand, maxPrice, minPrice, reviewRange: newValue });
   };
+
 
   return (
     <Box sx={{ p: 2 }}>
@@ -90,9 +92,9 @@ const ProductFilter = ({ onFilterChange }) => {
           </Typography>
           <Rating
             name="review-range"
-            value={reviewRange[1]}
+            value={reviewRange}
             precision={1}
-            onChange={(_, newValue) => handleReviewChange(_, [1, newValue])}
+            onChange={handleReviewChange}
           />
         </Grid>
       </Grid>
