@@ -20,7 +20,7 @@ const ProductItem = ({ product, onProductClick, filteredBrand, filteredMinPrice,
   const productPrice = parseFloat(product.price);
   const minPrice = parseFloat(filteredMinPrice);
   const maxPrice = parseFloat(filteredMaxPrice);
-  const reviews = parseFloat(filteredReviews);
+  const reviews = parseInt(filteredReviews);
   console.log('Precio del producto:', productPrice, 'Reviews:', reviews);
 
   if (
@@ -29,6 +29,7 @@ const ProductItem = ({ product, onProductClick, filteredBrand, filteredMinPrice,
   ) {
     return null; // No renderizar el componente si el precio no está en el rango
   }
+
 
   if (!isNaN(reviews) && (product.reviews < reviews || product.reviews > reviews)) {
     console.log('No renderizar el producto:', product.reviews, reviews);

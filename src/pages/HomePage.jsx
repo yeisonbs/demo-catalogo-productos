@@ -14,7 +14,7 @@ const HomePage = () => {
   const [selectedBrand, setSelectedBrand] = useState('All');
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(10000);
-  const [reviews, setReviews] = useState([1, 5]);
+  const [reviews, setReviews] = useState(null);
 
   const handleProductClick = (product) => {
     setSelectedProduct(product);
@@ -28,7 +28,7 @@ const HomePage = () => {
     setSelectedBrand(filters.brand);
     setMinPrice(filters.minPrice);
     setMaxPrice(filters.maxPrice);
-    setReviews(parseFloat(filters.reviewRange));
+    setReviews(parseInt(filters.reviewRange));
   };
 
   return (
