@@ -51,8 +51,8 @@ const HomePage = () => {
                   product={product}
                   onProductClick={handleProductClick}
                   filteredBrand={selectedBrand}
-                  minPrice={minPrice}
-                  maxPrice={maxPrice}
+                  filteredMinPrice={minPrice}
+                  filteredMaxPrice={maxPrice}
                 />
               ))}
             </Grid>

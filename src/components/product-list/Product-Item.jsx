@@ -2,7 +2,7 @@
 // components/ProductItem.js
 import React from 'react';
 import { Card, CardContent, Typography, CardActions, Button, Box, Rating, CardMedia, Grid } from '@mui/material';
-import productsData from '../../data/Products.json';
+//import productsData from '../../data/Products.json';
 
 
 
@@ -23,13 +23,12 @@ const ProductItem = ({ product, onProductClick, filteredBrand, filteredMinPrice,
   const maxPrice = parseFloat(filteredMaxPrice);
 
   if (
-    (!isNaN(minPrice) && productPrice < minPrice) ||
-    (!isNaN(maxPrice) && productPrice > maxPrice)
+    (!isNaN(minPrice) && productPrice <= minPrice) ||
+    (!isNaN(maxPrice) && productPrice >= maxPrice)
   ) {
     return null; // No renderizar el componente si el precio no está en el rango
   }
-  /* let minPrice = 600;
-  let maxPrice = 900; */
+  
 
   return (
     <Grid item xs={12} sm={6} md={4}>

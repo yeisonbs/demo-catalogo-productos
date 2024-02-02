@@ -1,6 +1,6 @@
 // components/ProductFilter.js
 import React, { useState, useEffect } from 'react';
-import { Box, Typography, Select, MenuItem, Slider, FormControl, InputLabel, Grid } from '@mui/material';
+import { Box, Typography, Select, MenuItem, FormControl, InputLabel, Grid } from '@mui/material';
 import productsData from '../../data/Products.json';
 import TextField from '@mui/material/TextField';
 import Rating from '@mui/material/Rating';
@@ -9,7 +9,7 @@ const ProductFilter = ({ onFilterChange }) => {
   const [brands, setBrands] = useState([]);
   const [selectedBrand, setSelectedBrand] = useState('All');
   const [minPrice, setMinPrice] = useState();
-  const [maxPrice, setMaxPrice] = useState(10000);
+  const [maxPrice, setMaxPrice] = useState();
   const [reviewRange, setReviewRange] = useState([1, 5]);
 
   useEffect(() => {
