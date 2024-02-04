@@ -43,6 +43,8 @@ const HomePage = () => {
           <div style={{ flex: '0 0 30%', paddingRight: '20px' }}>
             <ProductFilter onFilterChange={handleFilterChange} />
           </div>
+
+
           <div style={{ flex: '1' }}>
             {/* Renderizar ProductItem y otros elementos */}
             <Grid container spacing={2} sx={{ display: 'flex', flexWrap: 'wrap' }}>
@@ -67,6 +69,9 @@ const HomePage = () => {
       </footer>
       {/* Renderizar ProductModal */}
       <ProductModal product={selectedProduct} onClose={handleCloseModal} />
+
+
+
     </div>
   );
 };

@@ -55,7 +55,7 @@ const Footer = () => {
 
         <Grid container justifyContent="space-between" alignItems="center">
           <Typography variant="body2" color="textSecondary">
-            © 2024 Nombre de tu empresa
+            © 2024 MacroPay
           </Typography>
           <Box sx={{ display: 'flex', gap: 1 }}>
             <IconButton color="primary" href="#" target="_blank">
